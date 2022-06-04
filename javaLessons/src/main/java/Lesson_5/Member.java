@@ -1,21 +1,18 @@
-public class Member  <T>{
+public class Member<T> {
 
-       private T name;
+    private T name;
 
-       public Member(){
+    public Member() {
 
-       }
+    }
 
     public T getName() {
         return name;
     }
 
-    public Member (T  name){
-        this.name= name;
+    public Member(T name) {
+        this.name = name;
     }
 
 
-
-
 }
-
