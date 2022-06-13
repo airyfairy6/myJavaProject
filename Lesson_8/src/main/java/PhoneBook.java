@@ -1,16 +1,29 @@
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class PhoneBook {
-HashMap  <Integer, String> book = new HashMap<>();
+    public HashMap<Integer, String> book = create();
+
+    public HashMap<Integer, String> create() {
+        HashMap<Integer, String> book1 = new HashMap<Integer, String>();
+        book1.put(11111, "Ivanov");
+        book1.put(22222, "Petrov");
+        book1.put(33333, "Petrov");
+        book1.put(44444, "Romanov");
+        return book1;
+    }
+
     private String surname;
     private Integer phoneNumber;
 
-    public PhoneBook(){
+    public PhoneBook() {
 
     }
-    public PhoneBook (String surname){
-        this.surname=surname;
-        this.phoneNumber=phoneNumber;
+
+    public PhoneBook(String surname) {
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
 
     }
 
@@ -22,16 +35,24 @@ HashMap  <Integer, String> book = new HashMap<>();
     public int getPhoneNumber() {
         return phoneNumber;
     }
-    public void get(String surname, Integer phoneNumber){
-        for (HashMap.Entry<Integer, String> o : book.entrySet()) {
-            System.out.println(o.getKey() + ": " + o.getValue());
+
+    public void get(String surname) {
+        HashMap<Integer, String> map = book;
+        Set<Map.Entry<Integer, String>> entrySet = map.entrySet();
+        String desiredObject = surname;
+        System.out.println("Phone number(s) by  surname: " + surname);
+        for (Map.Entry<Integer, String> pair : entrySet) {
+            if (desiredObject.equals(pair.getValue())) {
+                System.out.println(pair.getKey() + " " + pair.getValue());
+            }
         }
-}
-    public void add(String surname,Integer phoneNumber,HashMap<Integer, String> book){
-        book.put(getPhoneNumber(), getSurname());
-        for (HashMap.Entry<Integer, String> o : book.entrySet()) {
-            System.out.println(o.getKey() + ": " + o.getValue());
-        }
+
+    }
+
+    public void add(Integer phoneNumber, String surname) {
+        book.put(phoneNumber, surname);
+        System.out.println("The PhoneBook with the added record: " + '\n' + book);
+
 
     }
 }
